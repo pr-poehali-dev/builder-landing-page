@@ -336,28 +336,61 @@ const Index = () => {
                 <CardTitle>Форма обратной связи</CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-4" onSubmit={(e) => {
+                <form className="space-y-4" onSubmit={async (e) => {
                   e.preventDefault();
-                  toast({
-                    title: "Заявка отправлена!",
-                    description: "Наш менеджер свяжется с вами в ближайшее время"
-                  });
+                  const formData = new FormData(e.currentTarget);
+                  const data = {
+                    name: formData.get('name'),
+                    phone: formData.get('phone'),
+                    email: formData.get('email'),
+                    message: formData.get('message')
+                  };
+
+                  try {
+                    const response = await fetch('https://functions.poehali.dev/73c3d7f9-562c-48ab-bb16-c0ec9fde98c1', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                      toast({
+                        title: "Заявка отправлена!",
+                        description: "Наш менеджер свяжется с вами в ближайшее время"
+                      });
+                      e.currentTarget.reset();
+                    } else {
+                      toast({
+                        title: "Ошибка",
+                        description: "Не удалось отправить заявку. Попробуйте позже.",
+                        variant: "destructive"
+                      });
+                    }
+                  } catch (error) {
+                    toast({
+                      title: "Ошибка",
+                      description: "Не удалось отправить заявку. Проверьте подключение к интернету.",
+                      variant: "destructive"
+                    });
+                  }
                 }}>
                   <div className="space-y-2">
                     <Label htmlFor="name">Ваше имя</Label>
-                    <Input id="name" placeholder="Иван Иванов" required />
+                    <Input id="name" name="name" placeholder="Иван Иванов" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="phone">Телефон</Label>
-                    <Input id="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+                    <Input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="example@mail.ru" required />
+                    <Input id="email" name="email" type="email" placeholder="example@mail.ru" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Сообщение</Label>
-                    <Textarea id="message" placeholder="Опишите ваш проект..." rows={4} required />
+                    <Textarea id="message" name="message" placeholder="Опишите ваш проект..." rows={4} />
                   </div>
                   <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
                     <Icon name="Send" size={20} className="mr-2" />
