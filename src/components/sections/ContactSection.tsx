@@ -25,45 +25,33 @@ const ContactSection = () => {
               <CardTitle>Форма обратной связи</CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="space-y-4" onSubmit={async (e) => {
+              <form className="space-y-4" onSubmit={(e) => {
                 e.preventDefault();
                 const formData = new FormData(e.currentTarget);
-                const data = {
-                  name: formData.get('name'),
-                  phone: formData.get('phone'),
-                  email: formData.get('email'),
-                  message: formData.get('message')
-                };
+                const name = formData.get('name') as string;
+                const phone = formData.get('phone') as string;
+                const email = formData.get('email') as string;
+                const message = formData.get('message') as string;
 
-                try {
-                  const response = await fetch('https://functions.poehali.dev/73c3d7f9-562c-48ab-bb16-c0ec9fde98c1', {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                  });
-
-                  if (response.ok) {
-                    toast({
-                      title: "Заявка отправлена!",
-                      description: "Наш менеджер свяжется с вами в ближайшее время"
-                    });
-                    e.currentTarget.reset();
-                  } else {
-                    toast({
-                      title: "Ошибка",
-                      description: "Не удалось отправить заявку. Попробуйте позже.",
-                      variant: "destructive"
-                    });
-                  }
-                } catch (error) {
-                  toast({
-                    title: "Ошибка",
-                    description: "Не удалось отправить заявку. Проверьте подключение к интернету.",
-                    variant: "destructive"
-                  });
+                let whatsappMessage = `Новая заявка с сайта:%0A%0A`;
+                whatsappMessage += `👤 Имя: ${encodeURIComponent(name)}%0A`;
+                whatsappMessage += `📞 Телефон: ${encodeURIComponent(phone)}%0A`;
+                if (email) {
+                  whatsappMessage += `📧 Email: ${encodeURIComponent(email)}%0A`;
                 }
+                if (message) {
+                  whatsappMessage += `%0A💬 Сообщение:%0A${encodeURIComponent(message)}`;
+                }
+
+                const whatsappUrl = `https://wa.me/79119327788?text=${whatsappMessage}`;
+                window.open(whatsappUrl, '_blank');
+
+                toast({
+                  title: "Открываем WhatsApp...",
+                  description: "Вы будете перенаправлены в WhatsApp для отправки заявки"
+                });
+
+                e.currentTarget.reset();
               }}>
                 <div className="space-y-2">
                   <Label htmlFor="name">Ваше имя</Label>
