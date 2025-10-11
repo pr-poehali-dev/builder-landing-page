@@ -22,6 +22,26 @@ const Index = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   const services = [
     {
       icon: 'Building2',
@@ -106,7 +126,7 @@ const Index = () => {
 
       <section id="services" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-4xl font-bold mb-4">Наши услуги</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Полный спектр строительных услуг для реализации проектов любой сложности
@@ -114,7 +134,7 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-on-scroll">
                 <CardHeader>
                   <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
                     <Icon name={service.icon} size={32} className="text-accent" />
@@ -132,13 +152,13 @@ const Index = () => {
 
       <section id="advantages" className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-4xl font-bold mb-4">Наши преимущества</h2>
             <p className="text-lg text-muted-foreground">Почему выбирают нас</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {advantages.map((advantage, index) => (
-              <div key={index} className="text-center">
+              <div key={index} className="text-center animate-on-scroll">
                 <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
                   <Icon name={advantage.icon} size={36} className="text-white" />
                 </div>
@@ -155,7 +175,7 @@ const Index = () => {
       <section id="about" className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="animate-on-scroll">
               <h2 className="text-4xl font-bold mb-6">О компании</h2>
               <p className="text-lg text-muted-foreground mb-4">
                 СтройЭксперт — ведущая строительная компания с 15-летним опытом работы на рынке. 
@@ -182,7 +202,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <div className="rounded-lg overflow-hidden shadow-2xl">
+            <div className="rounded-lg overflow-hidden shadow-2xl animate-on-scroll">
               <img 
                 src="https://cdn.poehali.dev/projects/2993e249-969f-45e8-bcf0-babcf30161f2/files/8e939c50-c5bc-4196-af96-715c1ea97ef4.jpg" 
                 alt="Строительная площадка СтройЭксперт" 
@@ -196,14 +216,14 @@ const Index = () => {
       <section id="faq" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-12 animate-on-scroll">
               <h2 className="text-4xl font-bold mb-4">Часто задаваемые вопросы</h2>
               <p className="text-lg text-muted-foreground">
                 Ответы на популярные вопросы о строительстве
               </p>
             </div>
 
-            <Accordion type="single" collapsible className="space-y-4">
+            <Accordion type="single" collapsible className="space-y-4 animate-on-scroll">
               <AccordionItem value="item-1" className="bg-white rounded-lg px-6 border shadow-sm">
                 <AccordionTrigger className="text-lg font-semibold hover:text-accent">
                   Преимущества сотрудничества с нами
@@ -303,7 +323,7 @@ const Index = () => {
 
       <section id="contact" className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-4xl font-bold mb-4">Свяжитесь с нами</h2>
             <p className="text-lg text-muted-foreground">
               Оставьте заявку и наши специалисты свяжутся с вами в ближайшее время
@@ -311,7 +331,7 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <Card>
+            <Card className="animate-on-scroll">
               <CardHeader>
                 <CardTitle>Форма обратной связи</CardTitle>
               </CardHeader>
@@ -348,7 +368,7 @@ const Index = () => {
             </Card>
 
             <div className="space-y-6">
-              <Card>
+              <Card className="animate-on-scroll">
                 <CardHeader>
                   <CardTitle>Контактная информация</CardTitle>
                 </CardHeader>
