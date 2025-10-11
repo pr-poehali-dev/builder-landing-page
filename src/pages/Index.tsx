@@ -401,7 +401,7 @@ const Index = () => {
             <div>
               <h4 className="font-bold mb-4">Контакты</h4>
               <ul className="space-y-2 text-sm text-gray-300">
-                <li>+7 (495) 123-45-67</li>
+                <li>+7 (911) 932-77-88</li>
                 <li>info@stroyexpert.ru</li>
                 <li>г. Москва, ул. Строителей, д. 10</li>
               </ul>
