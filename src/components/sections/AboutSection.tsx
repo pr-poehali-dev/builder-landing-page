@@ -32,8 +32,8 @@ const AboutSection = () => {
           </div>
           <div className="rounded-lg overflow-hidden shadow-2xl animate-on-scroll">
             <img 
-              src="https://cdn.poehali.dev/projects/2993e249-969f-45e8-bcf0-babcf30161f2/files/8e939c50-c5bc-4196-af96-715c1ea97ef4.jpg" 
-              alt="Строительная площадка СтройЭксперт" 
+              src="https://cdn.poehali.dev/projects/2993e249-969f-45e8-bcf0-babcf30161f2/files/777ba906-dbc5-4627-a55d-c6075abcb443.jpg" 
+              alt="Строительство ангара" 
               className="w-full h-full object-cover"
             />
           </div>
