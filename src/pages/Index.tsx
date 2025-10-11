@@ -7,9 +7,20 @@ import { Textarea } from '@/components/ui/textarea';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+import { useEffect, useState } from 'react';
 
 const Index = () => {
   const { toast } = useToast();
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const services = [
     {
@@ -70,6 +81,7 @@ const Index = () => {
             src="https://cdn.poehali.dev/projects/2993e249-969f-45e8-bcf0-babcf30161f2/files/520ce731-355b-44dd-9433-0eb1da34f905.jpg" 
             alt="Строительная площадка" 
             className="w-full h-full object-cover"
+            style={{ transform: `translateY(${scrollY * 0.5}px)` }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-secondary/85 to-primary/90"></div>
         </div>
