@@ -75,7 +75,7 @@ const Index = () => {
               Полный цикл работ от проектирования до сдачи под ключ.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-white" onClick={() => document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button size="lg" className="bg-accent hover:bg-accent/90 text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                 <Icon name="MessageSquare" size={20} className="mr-2" />
                 Получить консультацию
               </Button>
