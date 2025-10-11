@@ -15,7 +15,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Icon name="Building2" size={32} className="text-accent" />
-            <span className="text-2xl font-bold">СтройЭксперт</span>
+            <span className="text-2xl font-bold">РУКОС</span>
           </div>
           
           <nav className="hidden md:flex space-x-6">

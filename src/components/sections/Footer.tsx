@@ -8,7 +8,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Icon name="Building2" size={28} className="text-accent" />
-              <span className="text-xl font-bold">СтройЭксперт</span>
+              <span className="text-xl font-bold">РУКОС</span>
             </div>
             <p className="text-sm text-gray-300">
               Профессиональное строительство с 2008 года
@@ -40,7 +40,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-gray-600 pt-8 text-center text-sm text-gray-300">
-          <p>&copy; 2024 СтройЭксперт. Все права защищены.</p>
+          <p>&copy; 2024 РУКОС. Все права защищены.</p>
         </div>
       </div>
     </footer>
