@@ -340,7 +340,7 @@ const Index = () => {
                     <div>
                       <p className="font-semibold">Телефон</p>
                       <p className="text-muted-foreground">+7 (911) 932-77-88</p>
-                      <p className="text-muted-foreground">+7 (495) 123-45-68</p>
+                      <p className="text-muted-foreground"></p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
