@@ -10,7 +10,7 @@ const HeroSection = ({ scrollY }: HeroSectionProps) => {
     <section className="relative text-white py-32 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://cdn.poehali.dev/projects/2993e249-969f-45e8-bcf0-babcf30161f2/files/520ce731-355b-44dd-9433-0eb1da34f905.jpg" 
+          src="https://cdn.poehali.dev/projects/2993e249-969f-45e8-bcf0-babcf30161f2/files/420171fd-f9e9-459e-8230-9ea25a6d5a17.jpg" 
           alt="Строительная площадка" 
           className="w-full h-full object-cover"
           style={{ transform: `translateY(${scrollY * 0.5}px)` }}
