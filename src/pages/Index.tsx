@@ -64,8 +64,16 @@ const Index = () => {
         </div>
       </header>
 
-      <section className="relative bg-gradient-to-br from-primary via-secondary to-primary text-white py-32">
-        <div className="container mx-auto px-4">
+      <section className="relative text-white py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://cdn.poehali.dev/projects/2993e249-969f-45e8-bcf0-babcf30161f2/files/520ce731-355b-44dd-9433-0eb1da34f905.jpg" 
+            alt="Строительная площадка" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-secondary/85 to-primary/90"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl animate-fade-in">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Строим с заботой о качестве
