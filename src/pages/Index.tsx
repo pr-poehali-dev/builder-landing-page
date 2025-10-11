@@ -214,15 +214,6 @@ const Index = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="consult-email">Email</Label>
-                    <Input
-                      id="consult-email"
-                      type="email"
-                      placeholder="example@mail.ru"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
                     <Label htmlFor="consult-message">Опишите ваш проект *</Label>
                     <Textarea
                       id="consult-message"
