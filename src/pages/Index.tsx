@@ -41,26 +41,7 @@ const Index = () => {
     { icon: 'Clock', title: 'Соблюдение сроков', description: 'Четкое выполнение графика строительства' }
   ];
 
-  const projects = [
-    {
-      title: 'ЖК "Северный"',
-      description: 'Многоквартирный жилой комплекс, 120 квартир',
-      area: '15 000 м²',
-      year: '2023'
-    },
-    {
-      title: 'Торговый центр "Авеню"',
-      description: 'Современный торговый комплекс',
-      area: '8 500 м²',
-      year: '2023'
-    },
-    {
-      title: 'Производственный комплекс',
-      description: 'Складские и производственные помещения',
-      area: '22 000 м²',
-      year: '2022'
-    }
-  ];
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -74,7 +55,7 @@ const Index = () => {
             <nav className="hidden md:flex space-x-6">
               <a href="#services" className="hover:text-accent transition-colors">Услуги</a>
               <a href="#about" className="hover:text-accent transition-colors">О компании</a>
-              <a href="#projects" className="hover:text-accent transition-colors">Проекты</a>
+
               <a href="#consultation" className="hover:text-accent transition-colors">Консультация</a>
               <a href="#contact" className="hover:text-accent transition-colors">Контакты</a>
             </nav>
@@ -155,39 +136,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="projects" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Реализованные проекты</h2>
-            <p className="text-lg text-muted-foreground">Примеры наших работ</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-secondary to-primary flex items-center justify-center">
-                  <Icon name="Building" size={64} className="text-white/30" />
-                </div>
-                <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex justify-between text-sm">
-                    <div>
-                      <p className="text-muted-foreground">Площадь</p>
-                      <p className="font-semibold">{project.area}</p>
-                    </div>
-                    <div>
-                      <p className="text-muted-foreground">Год</p>
-                      <p className="font-semibold">{project.year}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       <section id="about" className="py-20">
         <div className="container mx-auto px-4">
@@ -415,7 +364,7 @@ const Index = () => {
               <h4 className="font-bold mb-4">Компания</h4>
               <ul className="space-y-2 text-sm text-gray-300">
                 <li><a href="#about" className="hover:text-accent transition-colors">О компании</a></li>
-                <li><a href="#projects" className="hover:text-accent transition-colors">Проекты</a></li>
+
                 <li><a href="#contact" className="hover:text-accent transition-colors">Контакты</a></li>
               </ul>
             </div>
