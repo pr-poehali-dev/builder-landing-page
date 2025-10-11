@@ -79,9 +79,6 @@ const Index = () => {
                 <Icon name="MessageSquare" size={20} className="mr-2" />
                 Получить консультацию
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white">
-                Наши проекты
-              </Button>
             </div>
           </div>
         </div>
