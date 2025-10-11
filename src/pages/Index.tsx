@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Header from '@/components/sections/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import ServicesSection from '@/components/sections/ServicesSection';
+import IndustrialObjectsSection from '@/components/sections/IndustrialObjectsSection';
 import AdvantagesSection from '@/components/sections/AdvantagesSection';
 import AboutSection from '@/components/sections/AboutSection';
 import FAQSection from '@/components/sections/FAQSection';
@@ -46,6 +47,7 @@ const Index = () => {
       <Header />
       <HeroSection scrollY={scrollY} />
       <ServicesSection />
+      <IndustrialObjectsSection />
       <AdvantagesSection />
       <AboutSection />
       <FAQSection />
