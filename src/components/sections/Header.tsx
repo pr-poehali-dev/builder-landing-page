@@ -13,9 +13,18 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-primary text-primary-foreground shadow-lg">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Icon name="Building2" size={32} className="text-accent" />
-            <span className="text-2xl font-bold">РУКОС</span>
+          <div className="flex items-center space-x-3">
+            <div className="flex items-center">
+              {['Р', 'У', 'К', 'О', 'С'].map((letter, index) => (
+                <div
+                  key={index}
+                  className="w-9 h-9 flex items-center justify-center border-2 border-accent text-accent font-bold text-lg"
+                  style={{ marginLeft: index > 0 ? '-2px' : '0' }}
+                >
+                  {letter}
+                </div>
+              ))}
+            </div>
           </div>
           
           <nav className="hidden md:flex space-x-6">

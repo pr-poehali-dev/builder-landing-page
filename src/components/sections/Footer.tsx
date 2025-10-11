@@ -6,9 +6,16 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <Icon name="Building2" size={28} className="text-accent" />
-              <span className="text-xl font-bold">РУКОС</span>
+            <div className="flex items-center mb-4">
+              {['Р', 'У', 'К', 'О', 'С'].map((letter, index) => (
+                <div
+                  key={index}
+                  className="w-8 h-8 flex items-center justify-center border-2 border-accent text-accent font-bold"
+                  style={{ marginLeft: index > 0 ? '-2px' : '0' }}
+                >
+                  {letter}
+                </div>
+              ))}
             </div>
             <p className="text-sm text-gray-300">
               Профессиональное строительство с 2008 года
