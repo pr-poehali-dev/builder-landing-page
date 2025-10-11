@@ -10,8 +10,11 @@ const Footer = () => {
               {['Р', 'У', 'К', 'О', 'С'].map((letter, index) => (
                 <div
                   key={index}
-                  className="w-8 h-8 flex items-center justify-center border-2 border-accent text-accent font-bold"
-                  style={{ marginLeft: index > 0 ? '-2px' : '0' }}
+                  className="logo-letter w-8 h-8 flex items-center justify-center border-2 border-accent text-accent font-bold"
+                  style={{ 
+                    marginLeft: index > 0 ? '-2px' : '0',
+                    animationDelay: `${index * 0.1}s`
+                  }}
                 >
                   {letter}
                 </div>

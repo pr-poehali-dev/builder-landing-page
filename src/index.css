@@ -142,4 +142,17 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  .logo-letter {
+    animation: letterSlide 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  @keyframes letterSlide {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
