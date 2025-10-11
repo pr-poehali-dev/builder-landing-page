@@ -1,8 +1,17 @@
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section id="about" className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://cdn.poehali.dev/projects/2993e249-969f-45e8-bcf0-babcf30161f2/files/777ba906-dbc5-4627-a55d-c6075abcb443.jpg" 
+          alt="Строительство ангара" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-background/95"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto">
           <div className="animate-on-scroll">
             <h2 className="text-4xl font-bold mb-6">О компании</h2>
             <p className="text-lg text-muted-foreground mb-4">
@@ -29,13 +38,6 @@ const AboutSection = () => {
                 <div className="text-sm text-muted-foreground">Сотрудников</div>
               </div>
             </div>
-          </div>
-          <div className="rounded-lg overflow-hidden shadow-2xl animate-on-scroll">
-            <img 
-              src="https://cdn.poehali.dev/projects/2993e249-969f-45e8-bcf0-babcf30161f2/files/777ba906-dbc5-4627-a55d-c6075abcb443.jpg" 
-              alt="Строительство ангара" 
-              className="w-full h-full object-cover"
-            />
           </div>
         </div>
       </div>
