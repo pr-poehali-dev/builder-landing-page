@@ -1,46 +1,15 @@
-import { useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
   const { toast } = useToast();
-  const [calcType, setCalcType] = useState('');
-  const [calcArea, setCalcArea] = useState('');
-  const [calcFloors, setCalcFloors] = useState('');
-  const [estimatedCost, setEstimatedCost] = useState<number | null>(null);
-
-  const calculateCost = () => {
-    if (!calcType || !calcArea || !calcFloors) {
-      toast({
-        title: "Заполните все поля",
-        description: "Для расчета стоимости необходимо указать все параметры",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    const baseRates: { [key: string]: number } = {
-      'residential': 45000,
-      'commercial': 65000,
-      'industrial': 55000,
-      'renovation': 35000
-    };
-
-    const baseRate = baseRates[calcType] || 50000;
-    const area = parseFloat(calcArea);
-    const floors = parseInt(calcFloors);
-    
-    const floorMultiplier = 1 + (floors - 1) * 0.15;
-    const total = baseRate * area * floorMultiplier;
-    
-    setEstimatedCost(total);
-  };
 
   const services = [
     {
@@ -106,7 +75,7 @@ const Index = () => {
               <a href="#services" className="hover:text-accent transition-colors">Услуги</a>
               <a href="#about" className="hover:text-accent transition-colors">О компании</a>
               <a href="#projects" className="hover:text-accent transition-colors">Проекты</a>
-              <a href="#calculator" className="hover:text-accent transition-colors">Калькулятор</a>
+              <a href="#consultation" className="hover:text-accent transition-colors">Консультация</a>
               <a href="#contact" className="hover:text-accent transition-colors">Контакты</a>
             </nav>
             <Button variant="outline" className="bg-accent hover:bg-accent/90 text-white border-none">
@@ -128,9 +97,9 @@ const Index = () => {
               Полный цикл работ от проектирования до сдачи под ключ.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-white">
-                <Icon name="Calculator" size={20} className="mr-2" />
-                Рассчитать стоимость
+              <Button size="lg" className="bg-accent hover:bg-accent/90 text-white" onClick={() => document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth' })}>
+                <Icon name="MessageSquare" size={20} className="mr-2" />
+                Получить консультацию
               </Button>
               <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white">
                 Наши проекты
@@ -257,72 +226,72 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="calculator" className="py-20 bg-muted/30">
+      <section id="consultation" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <Card>
               <CardHeader>
-                <CardTitle className="text-3xl">Онлайн-калькулятор стоимости</CardTitle>
+                <CardTitle className="text-3xl">Заявка на консультацию</CardTitle>
                 <CardDescription>
-                  Рассчитайте предварительную стоимость строительства вашего объекта
+                  Оставьте заявку и наши специалисты свяжутся с вами для бесплатной консультации по вашему проекту
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-6">
+                <form className="space-y-6" onSubmit={(e) => {
+                  e.preventDefault();
+                  toast({
+                    title: "Заявка отправлена!",
+                    description: "Наш специалист свяжется с вами в течение 30 минут"
+                  });
+                  e.currentTarget.reset();
+                }}>
                   <div className="space-y-2">
-                    <Label htmlFor="type">Тип объекта</Label>
-                    <Select value={calcType} onValueChange={setCalcType}>
-                      <SelectTrigger id="type">
-                        <SelectValue placeholder="Выберите тип объекта" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="residential">Жилое строительство</SelectItem>
-                        <SelectItem value="commercial">Коммерческое строительство</SelectItem>
-                        <SelectItem value="industrial">Промышленное строительство</SelectItem>
-                        <SelectItem value="renovation">Реконструкция</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="area">Площадь объекта (м²)</Label>
+                    <Label htmlFor="consult-name">Ваше имя *</Label>
                     <Input
-                      id="area"
-                      type="number"
-                      placeholder="Введите площадь"
-                      value={calcArea}
-                      onChange={(e) => setCalcArea(e.target.value)}
+                      id="consult-name"
+                      placeholder="Иван Иванов"
+                      required
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="floors">Количество этажей</Label>
+                    <Label htmlFor="consult-phone">Телефон *</Label>
                     <Input
-                      id="floors"
-                      type="number"
-                      placeholder="Введите количество этажей"
-                      value={calcFloors}
-                      onChange={(e) => setCalcFloors(e.target.value)}
+                      id="consult-phone"
+                      type="tel"
+                      placeholder="+7 (___) ___-__-__"
+                      required
                     />
                   </div>
 
-                  <Button onClick={calculateCost} className="w-full bg-accent hover:bg-accent/90">
-                    <Icon name="Calculator" size={20} className="mr-2" />
-                    Рассчитать стоимость
+                  <div className="space-y-2">
+                    <Label htmlFor="consult-email">Email</Label>
+                    <Input
+                      id="consult-email"
+                      type="email"
+                      placeholder="example@mail.ru"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="consult-message">Опишите ваш проект *</Label>
+                    <Textarea
+                      id="consult-message"
+                      placeholder="Расскажите, что вы хотите построить: тип объекта, площадь, сроки..."
+                      rows={5}
+                      required
+                    />
+                  </div>
+
+                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-lg py-6">
+                    <Icon name="Send" size={20} className="mr-2" />
+                    Отправить заявку
                   </Button>
 
-                  {estimatedCost !== null && (
-                    <div className="p-6 bg-accent/10 rounded-lg border-2 border-accent animate-fade-in">
-                      <p className="text-sm text-muted-foreground mb-2">Предварительная стоимость:</p>
-                      <p className="text-3xl font-bold text-accent">
-                        {estimatedCost.toLocaleString('ru-RU')} ₽
-                      </p>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        * Точная стоимость определяется после консультации с нашими специалистами
-                      </p>
-                    </div>
-                  )}
-                </div>
+                  <div className="text-sm text-muted-foreground text-center">
+                    Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
+                  </div>
+                </form>
               </CardContent>
             </Card>
           </div>
