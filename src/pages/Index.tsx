@@ -162,8 +162,12 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-secondary to-primary rounded-lg p-12 flex items-center justify-center">
-              <Icon name="HardHat" size={200} className="text-white/20" />
+            <div className="rounded-lg overflow-hidden shadow-2xl">
+              <img 
+                src="https://cdn.poehali.dev/projects/2993e249-969f-45e8-bcf0-babcf30161f2/files/8e939c50-c5bc-4196-af96-715c1ea97ef4.jpg" 
+                alt="Строительная площадка СтройЭксперт" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
