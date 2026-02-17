@@ -38,6 +38,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-gray-300">
               <li><a href="#about" className="hover:text-accent transition-colors">О компании</a></li>
               <li><a href="#contact" className="hover:text-accent transition-colors">Контакты</a></li>
+              <li><a href="/privacy" className="hover:text-accent transition-colors">Политика конфиденциальности</a></li>
             </ul>
           </div>
           <div>
