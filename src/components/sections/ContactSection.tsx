@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const [agreed, setAgreed] = useState(false);
 
   return (
     <section id="contact" className="py-20">
@@ -69,7 +72,20 @@ const ContactSection = () => {
                   <Label htmlFor="message">Сообщение</Label>
                   <Textarea id="message" name="message" placeholder="Опишите ваш проект..." rows={4} />
                 </div>
-                <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
+                <div className="flex items-start space-x-2">
+                  <Checkbox
+                    id="consent"
+                    checked={agreed}
+                    onCheckedChange={(checked) => setAgreed(checked === true)}
+                  />
+                  <label htmlFor="consent" className="text-sm text-muted-foreground leading-tight cursor-pointer">
+                    Я даю согласие на обработку персональных данных в соответствии с{' '}
+                    <a href="/privacy" target="_blank" className="text-accent underline hover:no-underline">
+                      политикой конфиденциальности
+                    </a>
+                  </label>
+                </div>
+                <Button type="submit" className="w-full bg-accent hover:bg-accent/90" disabled={!agreed}>
                   <Icon name="Send" size={20} className="mr-2" />
                   Отправить заявку
                 </Button>
