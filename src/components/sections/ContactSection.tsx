@@ -136,15 +136,6 @@ const ContactSection = () => {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <Icon name="MapPin" size={24} className="text-accent mt-1" />
-                  <div>
-                    <p className="font-semibold">Адрес</p>
-                    <p className="text-muted-foreground">
-                      г. Москва, ул. Строителей, д. 10, офис 301
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
                   <Icon name="Clock" size={24} className="text-accent mt-1" />
                   <div>
                     <p className="font-semibold">Режим работы</p>
